@@ -1,0 +1,105 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speed Metals & Scraps</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="AbdulKhadar" content="" />
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/gridmvc.js"></script>
+    <!--JS FILES -->
+
+    <script>
+        $(function () {
+            $("#prod_nav ul").tabs("#panes > div", {
+                effect: 'fade',
+                fadeOutSpeed: 400
+            });
+        });
+
+
+            $(".pane-list li").click(function () {
+                window.location = $(this).find("a").attr("href");
+                return false;
+            });
+
+    </script>
+
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/css/CustomTable.css" rel="stylesheet" />
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/LL/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/LL/menu/css/simple_menu.css">
+
+</head>
+<body>
+    <div class="header">
+        <!-- Logo/Title -->
+        <div id="site_title" ><a href="@Url.Action("Index", "Home")" title="Widget View" class="links"><img alt="Home" src="~/Content/speedlogo.jpg"></a> </div>
+        <!-- Main Menu -->
+        <ol id="menu">
+            <li>
+                @Html.ActionLink("Home", "Index", "Home")
+            </li>
+
+            <li>
+                @Html.ActionLink("Purchase", "Index", "Purchases")
+            </li>
+
+            <li>
+                @Html.ActionLink("Sales", "Index", "Sales")
+            </li>
+            <li>
+                @Html.ActionLink("Bills", "Index", "Bill")
+            </li>
+            <!-- end sub menu -->
+            <li></li>@Html.ActionLink("Stock", "Index", "Stock")
+
+            <li>@Html.ActionLink("Supplier", "Index", "Supplier")</li>
+            <li>@Html.ActionLink("Log Off", "LogOff", "UserAccess")</li>
+        </ol>
+    </div>
+    <!-- END header -->
+    <div id="container">
+        <!-- tab panes -->
+        <div id="prod_wrapper">
+            @RenderBody()
+            <br clear="all">
+
+        </div>
+        <!-- END prod wrapper -->
+        <div style="clear:both"></div>
+
+    </div>
+    <!-- END container -->
+    <div id="footer">
+        <!-- First Column -->
+        <div class="">
+            <h4>Design & Developed by AK</h4>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <!-- END footer -->
+</body>
+</html>

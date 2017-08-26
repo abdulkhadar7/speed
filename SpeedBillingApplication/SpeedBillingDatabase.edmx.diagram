@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9975a2e910242fe8382259d96ae0548" Name="Diagram1">
+        <EntityTypeShape EntityType="SpeedDatabaseModel.BuyerDetail" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.BuyerMain" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.Product" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.PurchaseDetail" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.PurchaseMain" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.SaleDetail" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.SaleMain" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.StockDetail" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.StockMain" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.SupplierDetail" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.SupplierMain" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SpeedDatabaseModel.UserAccess" Width="1.5" PointX="6.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

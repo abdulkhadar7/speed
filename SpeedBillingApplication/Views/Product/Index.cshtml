@@ -1,0 +1,140 @@
+﻿@model IEnumerable<SpeedBillingApplication.Models.ProductModel>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Product Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#AddBtn").on("click", function (e) {
+            var url = '@Url.Action("AddProduct", "Product")';
+            
+            $("#dialog-edit").dialog({
+                title: 'Details of Product',
+                autoOpen: false,
+                resizable: false,
+                height: 310,
+                width: 1050,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(this).load(url);
+
+                },
+                close: function (event, ui) {
+                    $(this).dialog('close');
+                }
+            });
+
+            $("#dialog-edit").dialog('open');
+            return false;
+        });
+
+
+        $(".edit").on("click", function (e) {
+            var url = $(this).attr('href');
+            $("#dialog-edit").dialog({
+                title: 'Edit Product Details',
+                autoOpen: false,
+                resizable: false,
+                height:300,
+                width: 1250,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(this).load(url);
+
+                },
+                close: function (event, ui) {
+                    $(this).dialog('close');
+                }
+            });
+
+            $("#dialog-edit").dialog('open');
+            return false;
+        });
+
+        $(".delete").on("click", function (e) {
+            var url = $(this).attr('href');
+
+            $("#dialog-confirm").dialog({
+                autoOpen: false,
+                resizable: false,
+                height: 200,
+                width: 350,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                        window.location = url;
+
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+
+                    }
+                }
+            });
+
+            $("#dialog-confirm").dialog('open');
+            return false;
+        });
+    });
+
+</script>
+
+<div>
+    <h3>Product List</h3>
+    <div style="color: red; font-weight: bold;padding-bottom: 1em;">
+        @TempData["fail"]
+    </div>
+    <div style="color: green; font-weight: bold;padding-bottom: 1em;">
+        @TempData["success"]
+    </div>
+
+    <div class="container" style="font-weight:400;font-size:medium;">
+        @Html.Grid(Model).Columns(columns =>
+   {
+       columns.Add(c => c.slNo).Titled("Sl No");
+       columns.Add(c => c.productName).Titled("Product Name").Filterable(true).Sortable(true);
+       columns.Add(c => c.hsn).Titled("HSN");
+       columns.Add(c => c.sgst).Titled("SGST");
+       columns.Add(c => c.cgst).Titled("CGST");
+       columns.Add(c => c.igst).Titled("IGST");
+
+       columns.Add()
+       .Encoded(false)
+       .Sanitized(false)
+       .SetWidth(30)
+       .RenderValueAs(o => Html.ActionLink("Edit", "EditProduct", new { productId = o.productId }, new { @class = "edit" }));
+       columns.Add()
+       .Encoded(false)
+       .Sanitized(false)
+       .SetWidth(30)
+       .RenderValueAs(o => Html.ActionLink("Delete", "DeleteProduct", new { productId = o.productId }, new { @class = "delete" }));
+
+   }).WithPaging(10).Sortable(true)
+    </div>
+
+    <div style="text-align:center;margin-top:20px;">
+
+        <button type="button" id="AddBtn" name="Command" value="Save"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <span class="ui-button-text">Add New Product</span>
+        </button>
+    </div>
+    <div>
+        <div id="dialog-confirm" style="display: none">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+                Are you sure to delete ?
+            </p>
+        </div>
+    </div>
+    <div id="dialog-edit" style="display: none">
+    </div>
+</div>

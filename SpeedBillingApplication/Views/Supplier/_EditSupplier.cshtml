@@ -1,0 +1,53 @@
+﻿@model SupplierMain
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnSave').click(function () {
+
+            if($('#SupplierName').val()==""||$('#SupplierAddress').val()=="")
+            {
+                $("#errmsg").html("All Fields are Mandatory").show().fadeOut(4000);
+                return false;
+            }
+        });
+
+        // capitalize first letter only
+        $('#SupplierName,#SupplierAddress').change(function () {
+            $(this).val(capitalize_Words($(this).val()));
+        });
+
+        function capitalize_Words(str) {
+            return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+        }
+
+    });
+
+</script>
+
+@using (Html.BeginForm("EditSupplier", "Supplier", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Enter Details of Supplier</legend>
+        <div id="errmsg" style="color:red;"></div>
+        <table class="tabledesign">
+            <tr>
+                <td>Supplier Name :</td>
+                <td>@Html.TextBoxFor(m => m.SupplierName)</td>
+                <td>Supplier Address :</td>
+                <td>@Html.TextAreaFor(m => m.SupplierAddress)</td>
+                <td style="display:none;">@Html.HiddenFor(m=>m.SupplierID)</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align:center;">
+                    <button type="submit" id="btnSave" name="Command" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <span class="ui-button-text">Update Supplier</span>
+                    </button>
+                    <button type="button" id="AddCancel" value="Cancel" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <span class="ui-button-text">Cancel</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}

@@ -1,0 +1,82 @@
+﻿@model Product
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.digit').on('keypress', function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                $("#errmsg").html("Only Numbers Allowed ! ! !").show().fadeOut(4000);
+                return false;
+            }
+        });
+
+        //to allow numbers and dot only
+        $('.tax').on('keypress', function (e) {
+            var self = $(this);
+            self.val(self.val().replace(/[^0-9\.]/g, ''));
+            if ((e.which != 46 || self.val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Only Numbers Allowed ! ! !").show().fadeOut(4000);
+                e.preventDefault();
+            }
+        });
+
+        // capitalize first letter only
+        $('#ProductName').change(function () {
+            $(this).val(capitalize_Words($(this).val()));
+        });
+
+        function capitalize_Words(str) {
+            return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+        }
+
+        $('#btnSave').click(function () {
+            if ($('#ProductName').val() == "" || $('#HSN').val() == "" || $('#SGST').val() == "" || $('#CGST').val() == "" || $('#IGST').val() == "")
+            {
+                $("#errmsg").html("All Fields are Mandatory").show().fadeOut(4000);
+                return false;
+            }
+        });
+
+        $("#AddCancel").click(function () {
+            $("#dialog-edit").dialog("close");
+
+        });
+    });
+</script>
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Please Enter details of Product</legend>
+        <div id="errmsg" style="color:red;"></div>
+        <table class="tabledesign">
+            <tr style="width:100%;">
+                <td>Product Name :</td>
+                <td>@Html.TextBoxFor(m => m.ProductName)</td>
+                <td>HSN Code :</td>
+                <td class="digit">@Html.TextBoxFor(m => m.HSN)</td>
+                <td style="display:none">@Html.HiddenFor(m=>m.ProductID)</td>
+            </tr>
+            <tr>
+                <td>SGST :</td>
+                <td>@Html.TextBoxFor(m => m.SGST, new { @class = "tax" })</td>
+                <td>CGST :</td>
+                <td>@Html.TextBoxFor(m => m.CGST, new { @class = "tax" })</td>
+                <td>IGST :</td>
+                <td>@Html.TextBoxFor(m => m.IGST, new { @class = "tax" })</td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    <button type="submit" id="btnSave" name="Command" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <span class="ui-button-text">Update</span>
+                    </button>
+                    <button type="button" id="AddCancel" value="Cancel" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                        <span class="ui-button-text">Cancel</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+

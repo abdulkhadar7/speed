@@ -1,0 +1,54 @@
+﻿tr.spaceUnder > td {
+    padding-bottom: 1em;
+}
+
+
+.tabledesign {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #ccc;
+    border-width: 1px;
+    border-style: solid;
+    empty-cells: show;
+}
+
+    .tabledesign td {
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+        padding: 10px 5px;
+        border-style: solid;
+       border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ccc;
+        color: #333;
+        background-color: #fff;
+    }
+
+    .tabledesign th {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: normal;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 0.25px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ccc;
+        color: #333;
+        background-color: #f0f0f0;
+    }
+
+    .tabledesign .header {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .tabledesign .col1 {
+        vertical-align: top;
+    }
+
+    .tabledesign .col2 {
+        background-color: #f9f9f9;
+        vertical-align: top;
+    }

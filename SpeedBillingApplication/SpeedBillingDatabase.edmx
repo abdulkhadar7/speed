@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SpeedDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuyerDetail">
+          <Key>
+            <PropertyRef Name="BuyerID" />
+            <PropertyRef Name="BuyerSeq" />
+          </Key>
+          <Property Name="BuyerID" Type="int" Nullable="false" />
+          <Property Name="BuyerSeq" Type="int" Nullable="false" />
+          <Property Name="SaleID" Type="int" Nullable="false" />
+          <Property Name="SaleAmount" Type="int" Nullable="false" />
+          <Property Name="AmountReceived" Type="int" Nullable="false" />
+          <Property Name="Credit" Type="int" />
+        </EntityType>
+        <EntityType Name="BuyerMain">
+          <Key>
+            <PropertyRef Name="BuyerID" />
+          </Key>
+          <Property Name="BuyerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerName" Type="varchar(max)" Nullable="false" />
+          <Property Name="TotalSaleAmount" Type="bigint" Nullable="false" />
+          <Property Name="TotalAmountReceived" Type="bigint" Nullable="false" />
+          <Property Name="TotalCredit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar(max)" Nullable="false" />
+          <Property Name="HSN" Type="int" Nullable="false" />
+          <Property Name="SGST" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="CGST" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="IGST" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseDetail">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+            <PropertyRef Name="PurchaseSeq" />
+          </Key>
+          <Property Name="PurchaseID" Type="int" Nullable="false" />
+          <Property Name="PurchaseSeq" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="PurchaseRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PurchaseQuantity" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseMain">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="int" Nullable="false" />
+          <Property Name="PurchaseDate" Type="date" Nullable="false" />
+          <Property Name="TotalPurchaseAmount" Type="int" Nullable="false" />
+          <Property Name="TotalAmountPaid" Type="int" Nullable="false" />
+          <Property Name="TotalPurchaseCredit" Type="int" Nullable="false" />
+          <Property Name="SupplierID" Type="int" />
+        </EntityType>
+        <EntityType Name="SaleDetail">
+          <Key>
+            <PropertyRef Name="SaleID" />
+            <PropertyRef Name="SaleSeq" />
+          </Key>
+          <Property Name="SaleID" Type="int" Nullable="false" />
+          <Property Name="SaleSeq" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="SaleRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleQuantity" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="SaleAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SaleMain">
+          <Key>
+            <PropertyRef Name="SaleID" />
+          </Key>
+          <Property Name="SaleID" Type="int" Nullable="false" />
+          <Property Name="SaleDate" Type="date" Nullable="false" />
+          <Property Name="BuyerID" Type="int" Nullable="false" />
+          <Property Name="TotalSaleAmount" Type="int" Nullable="false" />
+          <Property Name="TotalAmountReceived" Type="int" Nullable="false" />
+          <Property Name="TotalSaleCredit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockDetail">
+          <Key>
+            <PropertyRef Name="StockID" />
+            <PropertyRef Name="StockSeq" />
+          </Key>
+          <Property Name="StockID" Type="int" Nullable="false" />
+          <Property Name="StockSeq" Type="int" Nullable="false" />
+          <Property Name="PurchaseID" Type="int" Nullable="false" />
+          <Property Name="PurchaseQuantity" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="StockMain">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="TotalQuantity" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="SupplierDetail">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+            <PropertyRef Name="SupplierSeq" />
+          </Key>
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="SupplierSeq" Type="int" Nullable="false" />
+          <Property Name="PurchaseID" Type="int" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="int" Nullable="false" />
+          <Property Name="AmountPaid" Type="int" />
+          <Property Name="SupplierCredit" Type="int" />
+        </EntityType>
+        <EntityType Name="SupplierMain">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TotalPurchaseCost" Type="bigint" Nullable="false" />
+          <Property Name="TotalSupplierCredit" Type="int" Nullable="false" />
+          <Property Name="SupplierAddress" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccess">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="Access" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SpeedDatabaseModelStoreContainer">
+          <EntitySet Name="BuyerDetail" EntityType="Self.BuyerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuyerMain" EntityType="Self.BuyerMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseDetail" EntityType="Self.PurchaseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseMain" EntityType="Self.PurchaseMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleDetail" EntityType="Self.SaleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleMain" EntityType="Self.SaleMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockDetail" EntityType="Self.StockDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockMain" EntityType="Self.StockMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierDetail" EntityType="Self.SupplierDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierMain" EntityType="Self.SupplierMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccess" EntityType="Self.UserAccess" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpeedDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SpeedDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuyerDetails" EntityType="SpeedDatabaseModel.BuyerDetail" />
+          <EntitySet Name="BuyerMains" EntityType="SpeedDatabaseModel.BuyerMain" />
+          <EntitySet Name="Products" EntityType="SpeedDatabaseModel.Product" />
+          <EntitySet Name="PurchaseDetails" EntityType="SpeedDatabaseModel.PurchaseDetail" />
+          <EntitySet Name="PurchaseMains" EntityType="SpeedDatabaseModel.PurchaseMain" />
+          <EntitySet Name="SaleDetails" EntityType="SpeedDatabaseModel.SaleDetail" />
+          <EntitySet Name="SaleMains" EntityType="SpeedDatabaseModel.SaleMain" />
+          <EntitySet Name="StockDetails" EntityType="SpeedDatabaseModel.StockDetail" />
+          <EntitySet Name="StockMains" EntityType="SpeedDatabaseModel.StockMain" />
+          <EntitySet Name="SupplierDetails" EntityType="SpeedDatabaseModel.SupplierDetail" />
+          <EntitySet Name="SupplierMains" EntityType="SpeedDatabaseModel.SupplierMain" />
+          <EntitySet Name="UserAccesses" EntityType="SpeedDatabaseModel.UserAccess" />
+        </EntityContainer>
+        <EntityType Name="BuyerDetail">
+          <Key>
+            <PropertyRef Name="BuyerID" />
+            <PropertyRef Name="BuyerSeq" />
+          </Key>
+          <Property Name="BuyerID" Type="Int32" Nullable="false" />
+          <Property Name="BuyerSeq" Type="Int32" Nullable="false" />
+          <Property Name="SaleID" Type="Int32" Nullable="false" />
+          <Property Name="SaleAmount" Type="Int32" Nullable="false" />
+          <Property Name="AmountReceived" Type="Int32" Nullable="false" />
+          <Property Name="Credit" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BuyerMain">
+          <Key>
+            <PropertyRef Name="BuyerID" />
+          </Key>
+          <Property Name="BuyerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalSaleAmount" Type="Int64" Nullable="false" />
+          <Property Name="TotalAmountReceived" Type="Int64" Nullable="false" />
+          <Property Name="TotalCredit" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HSN" Type="Int32" Nullable="false" />
+          <Property Name="SGST" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="CGST" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="IGST" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="PurchaseDetail">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+            <PropertyRef Name="PurchaseSeq" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseSeq" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PurchaseQuantity" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="PurchaseAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PurchaseMain">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalPurchaseAmount" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmountPaid" Type="Int32" Nullable="false" />
+          <Property Name="TotalPurchaseCredit" Type="Int32" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SaleDetail">
+          <Key>
+            <PropertyRef Name="SaleID" />
+            <PropertyRef Name="SaleSeq" />
+          </Key>
+          <Property Name="SaleID" Type="Int32" Nullable="false" />
+          <Property Name="SaleSeq" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="SaleRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleQuantity" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="SaleAmount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SaleMain">
+          <Key>
+            <PropertyRef Name="SaleID" />
+          </Key>
+          <Property Name="SaleID" Type="Int32" Nullable="false" />
+          <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BuyerID" Type="Int32" Nullable="false" />
+          <Property Name="TotalSaleAmount" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmountReceived" Type="Int32" Nullable="false" />
+          <Property Name="TotalSaleCredit" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockDetail">
+          <Key>
+            <PropertyRef Name="StockID" />
+            <PropertyRef Name="StockSeq" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" />
+          <Property Name="StockSeq" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseQuantity" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="StockMain">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="TotalQuantity" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="SupplierDetail">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+            <PropertyRef Name="SupplierSeq" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierSeq" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="Int32" Nullable="false" />
+          <Property Name="AmountPaid" Type="Int32" />
+          <Property Name="SupplierCredit" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SupplierMain">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPurchaseCost" Type="Int64" Nullable="false" />
+          <Property Name="TotalSupplierCredit" Type="Int32" Nullable="false" />
+          <Property Name="SupplierAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserAccess">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Access" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SpeedDatabaseModelStoreContainer" CdmEntityContainer="SpeedDatabaseEntities">
+          <EntitySetMapping Name="BuyerDetails">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.BuyerDetail">
+              <MappingFragment StoreEntitySet="BuyerDetail">
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="AmountReceived" ColumnName="AmountReceived" />
+                <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+                <ScalarProperty Name="BuyerSeq" ColumnName="BuyerSeq" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuyerMains">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.BuyerMain">
+              <MappingFragment StoreEntitySet="BuyerMain">
+                <ScalarProperty Name="TotalCredit" ColumnName="TotalCredit" />
+                <ScalarProperty Name="TotalAmountReceived" ColumnName="TotalAmountReceived" />
+                <ScalarProperty Name="TotalSaleAmount" ColumnName="TotalSaleAmount" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="HSN" ColumnName="HSN" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseDetails">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.PurchaseDetail">
+              <MappingFragment StoreEntitySet="PurchaseDetail">
+                <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+                <ScalarProperty Name="PurchaseQuantity" ColumnName="PurchaseQuantity" />
+                <ScalarProperty Name="PurchaseRate" ColumnName="PurchaseRate" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PurchaseSeq" ColumnName="PurchaseSeq" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseMains">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.PurchaseMain">
+              <MappingFragment StoreEntitySet="PurchaseMain">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="TotalPurchaseCredit" ColumnName="TotalPurchaseCredit" />
+                <ScalarProperty Name="TotalAmountPaid" ColumnName="TotalAmountPaid" />
+                <ScalarProperty Name="TotalPurchaseAmount" ColumnName="TotalPurchaseAmount" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleDetails">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.SaleDetail">
+              <MappingFragment StoreEntitySet="SaleDetail">
+                <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+                <ScalarProperty Name="SaleQuantity" ColumnName="SaleQuantity" />
+                <ScalarProperty Name="SaleRate" ColumnName="SaleRate" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="SaleSeq" ColumnName="SaleSeq" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleMains">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.SaleMain">
+              <MappingFragment StoreEntitySet="SaleMain">
+                <ScalarProperty Name="TotalSaleCredit" ColumnName="TotalSaleCredit" />
+                <ScalarProperty Name="TotalAmountReceived" ColumnName="TotalAmountReceived" />
+                <ScalarProperty Name="TotalSaleAmount" ColumnName="TotalSaleAmount" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockDetails">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.StockDetail">
+              <MappingFragment StoreEntitySet="StockDetail">
+                <ScalarProperty Name="PurchaseQuantity" ColumnName="PurchaseQuantity" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="StockSeq" ColumnName="StockSeq" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockMains">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.StockMain">
+              <MappingFragment StoreEntitySet="StockMain">
+                <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierDetails">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.SupplierDetail">
+              <MappingFragment StoreEntitySet="SupplierDetail">
+                <ScalarProperty Name="SupplierCredit" ColumnName="SupplierCredit" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="SupplierSeq" ColumnName="SupplierSeq" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierMains">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.SupplierMain">
+              <MappingFragment StoreEntitySet="SupplierMain">
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="TotalSupplierCredit" ColumnName="TotalSupplierCredit" />
+                <ScalarProperty Name="TotalPurchaseCost" ColumnName="TotalPurchaseCost" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccesses">
+            <EntityTypeMapping TypeName="SpeedDatabaseModel.UserAccess">
+              <MappingFragment StoreEntitySet="UserAccess">
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

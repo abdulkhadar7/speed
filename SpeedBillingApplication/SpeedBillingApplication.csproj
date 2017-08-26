@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5D58D873-EA5B-437D-BD62-888BF2AC560B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpeedBillingApplication</RootNamespace>
+    <AssemblyName>SpeedBillingApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\CustomTable.css" />
+    <Content Include="Content\font-awesome\css\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\image\rupee.png" />
+    <Content Include="Content\image\sale.png" />
+    <Content Include="Content\image\saleicon.png" />
+    <Content Include="Content\image\shopping-cart.png" />
+    <Content Include="Content\image\supplier.png" />
+    <Content Include="Content\image\warehouse.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\speedlogo.jpg" />
+    <Content Include="Content\speedLogo.png" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Grid.mvc.readme" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\animated.less" />
+    <Content Include="Content\font-awesome\less\bootstrap.less" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\extras.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\screen-reader.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome-ie7.scss" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\font-awesome\scss\_bootstrap.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_extras.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\font\Audrey-Bold.otf" />
+    <Content Include="Content\font\Audrey-BoldOblique.otf" />
+    <Content Include="Content\font\Audrey-Medium.otf" />
+    <Content Include="Content\font\Audrey-MediumOblique.otf" />
+    <Content Include="Content\font\Audrey-Normal.otf" />
+    <Content Include="Content\font\Audrey-NormalOblique.otf" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="LL\boxes\css\websymbols\websymbols-regular-webfont.eot" />
+    <Content Include="LL\boxes\css\websymbols\websymbols-regular-webfont.ttf" />
+    <Content Include="LL\boxes\css\websymbols\websymbols-regular-webfont.woff" />
+    <Content Include="LL\fonts\GeosansLight-Oblique.ttf" />
+    <Content Include="LL\fonts\GeosansLight.ttf" />
+    <Content Include="LL\fonts\Quicksand_Bold.otf" />
+    <Content Include="LL\fonts\Quicksand_Bold_Oblique.otf" />
+    <Content Include="LL\fonts\Quicksand_Book.otf" />
+    <Content Include="LL\fonts\Quicksand_Book_Oblique.otf" />
+    <Content Include="LL\fonts\Quicksand_Dash.otf" />
+    <Content Include="LL\fonts\Quicksand_Light.otf" />
+    <Content Include="LL\fonts\Quicksand_Light_Oblique.otf" />
+    <Content Include="LL\fonts\Walkway_Black.ttf" />
+    <Content Include="LL\fonts\Walkway_Bold.ttf" />
+    <Content Include="LL\fonts\Walkway_Oblique.ttf" />
+    <Content Include="LL\fonts\Walkway_Oblique_Black.ttf" />
+    <Content Include="LL\fonts\Walkway_Oblique_Bold.ttf" />
+    <Content Include="LL\fonts\Walkway_Oblique_SemiBold.ttf" />
+    <Content Include="LL\fonts\Walkway_Oblique_UltraBold.ttf" />
+    <Content Include="LL\fonts\Walkway_SemiBold.ttf" />
+    <Content Include="LL\fonts\Walkway_UltraBold.ttf" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="LL\boxes\css\style5.css" />
+    <Content Include="LL\boxes\css\style6.css" />
+    <Content Include="LL\boxes\css\websymbols\websymbols-regular-webfont.svg" />
+    <Content Include="LL\css\demo.css" />
+    <Content Include="LL\css\gridNavigation.css" />
+    <Content Include="LL\css\nivo-slider.css" />
+    <Content Include="LL\css\style.css" />
+    <Content Include="LL\css\supersized.css" />
+    <Content Include="LL\js\accordion\jquery.accordion.js" />
+    <Content Include="LL\js\custom.js" />
+    <Content Include="LL\js\cycle-slider\cycle.js" />
+    <Content Include="LL\js\easing\jquery.easing.1.3.js" />
+    <Content Include="LL\js\fancybox\fancy_closebox.png" />
+    <Content Include="LL\js\fancybox\fancy_left.png" />
+    <Content Include="LL\js\fancybox\fancy_progress.png" />
+    <Content Include="LL\js\fancybox\fancy_right.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_e.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_n.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_ne.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_nw.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_s.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_se.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_sw.png" />
+    <Content Include="LL\js\fancybox\fancy_shadow_w.png" />
+    <Content Include="LL\js\fancybox\fancy_title_left.png" />
+    <Content Include="LL\js\fancybox\fancy_title_main.png" />
+    <Content Include="LL\js\fancybox\fancy_title_right.png" />
+    <Content Include="LL\js\fancybox\jquery-1.3.2.min.js" />
+    <Content Include="LL\js\fancybox\jquery.easing.1.3.js" />
+    <Content Include="LL\js\fancybox\jquery.fancybox-1.2.1.js" />
+    <Content Include="LL\js\fancybox\jquery.fancybox-1.2.1.pack.js" />
+    <Content Include="LL\js\fancybox\jquery.fancybox.css" />
+    <Content Include="LL\js\jquery.easing.1.3.js" />
+    <Content Include="LL\js\jquery.eislideshow.js" />
+    <Content Include="LL\js\jquery.gridnav.js" />
+    <Content Include="LL\js\jquery.min.js" />
+    <Content Include="LL\js\jquery.mousewheel.js" />
+    <Content Include="LL\js\jquery.tools.min.js" />
+    <Content Include="LL\js\kwicks\jquery.kwicks-1.5.1.pack.js" />
+    <Content Include="LL\js\modernizr\modernizr-2.0.3.js" />
+    <Content Include="LL\js\nivo-slider\jquery.nivo.slider.js" />
+    <Content Include="LL\js\nivo-slider\nivo-slider.css" />
+    <Content Include="LL\js\portfolio\filterable.js" />
+    <Content Include="LL\js\prettyPhoto\jquery.prettyPhoto.js" />
+    <Content Include="LL\js\scrolltop\scrolltopcontrol.js" />
+    <Content Include="LL\js\scrolltop\top.png" />
+    <Content Include="LL\js\slides\slides.min.jquery.js" />
+    <Content Include="LL\js\supersized.3.2.6.min.js" />
+    <Content Include="LL\js\swfobject\expressinstall.swf" />
+    <Content Include="LL\js\swfobject\swfobject.js" />
+    <Content Include="LL\js\tabify\jquery.tabify.js" />
+    <Content Include="LL\js\twitter\jquery.tweet.js" />
+    <Content Include="LL\menu\css\simple_menu.css" />
+    <Content Include="LL\theme\supersized.shutter.css" />
+    <Content Include="LL\theme\supersized.shutter.js" />
+    <Content Include="LL\theme\supersized.shutter.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="SpeedBillingDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpeedBillingDatabase.edmx</DependentUpon>
+      <LastGenOutput>SpeedBillingDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SpeedBillingDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SpeedBillingDatabase.edmx</DependentUpon>
+      <LastGenOutput>SpeedBillingDatabase.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BuyerDetail.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BuyerMain.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="DBLayer\ProductDBOperations.cs" />
+    <Compile Include="DBLayer\PurchaseDBOperations.cs" />
+    <Compile Include="DBLayer\SupplierDBOperations.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\PurchaseViewModel.cs" />
+    <Compile Include="Models\SupplierViewModel.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseMain.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SaleDetail.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SaleMain.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpeedBillingDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpeedBillingDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpeedBillingDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpeedBillingDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpeedBillingDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="StockDetail.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockMain.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierDetail.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierMain.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccess.cs">
+      <DependentUpon>SpeedBillingDatabase.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <EntityDeploy Include="SpeedBillingDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SpeedBillingDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SpeedBillingDatabase.edmx.diagram">
+      <DependentUpon>SpeedBillingDatabase.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\_AddProduct.cshtml" />
+    <Content Include="Views\Product\_EditProduct.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\Supplier\_AddSupplier.cshtml" />
+    <Content Include="Views\Supplier\_EditSupplier.cshtml" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5701</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5701/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
